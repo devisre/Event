@@ -1,0 +1,86 @@
+package Swing;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Show extends JFrame implements ActionListener{
+	JLabel l1,l2,l3,l4,l5,l6,l7,l8;
+	JTextField jt1;
+	Show(){
+		
+		 l1=new JLabel("Show students details");
+		 l1.setBounds(120,20, 200,30);
+		 l2=new JLabel("Enter id:");
+		 l2.setBounds(50,70, 150,30);
+		 l3=new JLabel("id:");
+		 l3.setBounds(50,100, 200,30);
+		 l4=new JLabel("name:");
+		 l4.setBounds(50,130, 200,30);
+		 l5=new JLabel("class:");
+		 l5.setBounds(50,160, 200,30);
+		 l6=new JLabel("rollno:");
+		 l6.setBounds(50,190, 200,30);
+		 l7=new JLabel("phno:");
+		 l7.setBounds(50,220, 200,30);
+		 l8=new JLabel("mailid:");
+		 l8.setBounds(50,250, 200,30);
+		 add(l1);add(l2);add(l3);add(l4);add(l5);add(l6);add(l7);add(l8);
+		 
+		 jt1= new JTextField();
+		 jt1.setBounds(100, 70, 150, 30);
+		 add(jt1);
+		 
+		 JButton Jb= new JButton("Submit");
+		 Jb.setBounds(200, 70, 100, 30);
+		 add(Jb);
+		 
+		 Jb.addActionListener(this);
+		 setSize(500,500);
+		 setLayout(null);
+		 setVisible(true);  }
+	
+	void showmethod() throws SQLException {
+	     Connection obj=DriverManager.getConnection("jdbc:mysql://localhost:3306/colleagedb","root","sreepriya1357"); 
+         
+        int id=Integer.parseInt(jt1.getText());
+        System.out.println(id);
+        
+        
+        PreparedStatement st=obj.prepareStatement("select * from Students where id=? ");
+        st.setInt(1,id);
+        ResultSet rs=st.executeQuery();
+	    while(rs.next()) {
+		System.out.println(rs.getInt(1)+","+rs.getString(2)+","+rs.getInt(3)+","+rs.getInt(4)+","+rs.getInt(5)+","+rs.getString(6));}
+	    l3.setText(rs.getString(1));
+	    l4.setText(rs.getString(1));
+	    l5.setText(rs.getString(1));
+	    l6.setText(rs.getString(1));
+	    l7.setText(rs.getString(1));
+	    l8.setText(rs.getString(1));
+	
+	}
+		 
+	public void actionPerformed(ActionEvent e ) {
+
+		  if(e.getActionCommand().equals("Submit")) {
+			  try {
+				showmethod();
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}  
+		  }
+		 
+		
+	  }
+	}

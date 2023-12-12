@@ -1,0 +1,74 @@
+package Swing;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Showall extends JFrame implements ActionListener{
+	JLabel l1;
+	JButton Jb;
+	
+	ArrayList<studentdetails>al=new ArrayList<>();
+	Showall(){
+		
+	     l1=new JLabel("Show all Students Details");
+		 l1.setBounds(120, 30, 200,30);
+		 add(l1);
+		 
+		 Jb= new JButton("Show all details");
+		 Jb.setBounds(80, 100, 200, 30);
+		 add(Jb);
+		 
+		 Jb.addActionListener(this);
+		 setSize(400,400);
+		 setLayout(null);
+		 setVisible(true); 
+		 
+	}
+	
+	void showalmethod() throws SQLException   {
+		
+		
+		Connection obj=DriverManager.getConnection("jdbc:mysql://localhost/colleagedb","root","sreepriya1357");
+		PreparedStatement st=obj.prepareStatement("select * from Students");
+		
+		ResultSet rs=st.executeQuery("select * from Students");
+		
+		System.out.println("Show all students details");
+		
+		while(rs.next()) {
+		studentdetails studetail=new studentdetails();
+		studetail.setId(rs.getInt(1));
+		studetail.setName(rs.getString(2));
+		studetail.setClas(rs.getInt(3));
+		studetail.setRoll(rs.getInt(4));
+		studetail.setPhno(rs.getInt(5));
+		studetail.setEmail(rs.getString(6));
+		
+		
+		System.out.println(rs.getInt(1)+","+rs.getString(2)+","+rs.getInt(3)+","+rs.getInt(4)+","+rs.getInt(5)+","+rs.getString(6));}
+		
+	}
+	
+	public void actionPerformed(ActionEvent e ) {
+		 
+		 try {
+			showalmethod();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+	}
+}
+	
+
+

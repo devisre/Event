@@ -1,0 +1,31 @@
+#hed{
+    position: fixed;
+    text-indent: 2cm;
+    color: rgb(19, 19, 32);
+    text-align:left;
+    font-weight:1000;
+    font-size:larger ;
+    width: 1500px;
+    background-color: rgb(180, 165, 176);
+}
+
+h2{
+    text-align: center;
+    font-weight: 300;
+    font-display: initial;
+}
+
+#call{
+    position: absolute;
+    margin-top: 100px;
+    margin-left:1000px;
+    width: 350px;
+    height:350px;
+    background-color: aquamarine;
+}
+
+#buton{
+    margin-top: 100px; 
+    width: 150px;
+    height: 100px;
+}

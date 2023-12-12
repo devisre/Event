@@ -1,0 +1,21 @@
+package Swing;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
+import java.awt.*;
+import java.sql.*;
+
+public class Showall extends JFrame {
+    private JTable dataTable;
+    private JScrollPane scrollPane;
+    private Connection connection;
+    Showall(){
+    	SwingUtilities.invokeLater(() -> {
+    		//Showall dataDisplay = new Showall();
+    		MySQLDataDisplay datadisplay=new MySQLDataDisplay ();
+            datadisplay.setVisible(true);
+        });
+    }
+    
+}
+	
