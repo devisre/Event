@@ -17,15 +17,49 @@ h2{
 
 #call{
     position: absolute;
-    margin-top: 100px;
+    margin-top: 5cm;
     margin-left:1000px;
     width: 350px;
     height:350px;
-    background-color: aquamarine;
 }
 
-#buton{
-    margin-top: 100px; 
-    width: 150px;
-    height: 100px;
+#submit{
+    margin-top: 0cm; 
+    margin-left: 2cm;
+   
+}
+
+#sign{
+    width: 100px;
+    height: 50px;
+}
+
+#Pass{
+    margin-top: 6cm;
+    margin-left: 3cm;
+    
+}
+
+#image{
+    margin-top: 3cm;
+    width: 200px;
+    height: 200px;
+}
+
+#facili{
+    position: absolute;
+    margin-top: 15cm;
+    margin-left: 25cm;
+    letter-spacing:5px;
+    text-transform: uppercase;
+    border: 20px outset;
+    width: 450px;
+    border-color: black;
+}
+
+h4{
+    border:5px;
+    width: 300px;
+    
+
 }
